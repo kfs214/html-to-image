@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 
 import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
@@ -13,11 +14,15 @@ export type Props = {
 
 export function Preview({ name }: Props) {
   const previewRef = useRef<HTMLDivElement>(null);
-  // TODO ShareButton設置
   const { base64url, handleShare } = usePreview(previewRef);
 
   return (
     <Box sx={{ py: 2 }}>
+      <Box sx={{ my: 2 }}>
+        <Button onClick={handleShare} variant="outlined">
+          Save
+        </Button>
+      </Box>
       <Box position={base64url ? 'absolute' : 'relative'}>
         <Card sx={{ width: 320, height: 240 }} ref={previewRef}>
           <Box
