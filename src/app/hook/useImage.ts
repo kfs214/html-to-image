@@ -34,7 +34,11 @@ export function useImage(ref: RefObject<HTMLDivElement>) {
       .then(async (dataUrl) => {
         const file = await base64toFile(dataUrl);
 
-        if (file && navigator.canShare({ files: [file] })) {
+        if (
+          file &&
+          navigator.canShare &&
+          navigator.canShare({ files: [file] })
+        ) {
           await navigator.share({
             ...imageOptions.share,
             files: [file],
