@@ -23,26 +23,33 @@ export function Preview({ name }: Props) {
           Save
         </Button>
       </Box>
-      <Box position={base64url ? 'absolute' : 'relative'}>
-        <Card sx={{ width: 320, height: 240 }} ref={previewRef}>
-          <Box
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-            sx={{ height: '100%' }}
-          >
-            <CardContent>
-              <Typography variant="body1">{name}</Typography>
-            </CardContent>
-          </Box>
-        </Card>
-      </Box>
-      {base64url && (
-        <Box position="relative">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img style={{ display: 'block' }} src={base64url} alt="preview" />
+
+      <Box position="relative">
+        <Box>
+          <Card sx={{ width: 320, height: 240 }} ref={previewRef}>
+            <Box
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+              sx={{ height: '100%' }}
+            >
+              <CardContent>
+                <Typography variant="body1">{name}</Typography>
+              </CardContent>
+            </Box>
+          </Card>
         </Box>
-      )}
+        {base64url && (
+          <Box position="absolute" top={0} sx={{ height: '100%' }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              style={{ display: 'block', width: 'auto', height: '100%' }}
+              src={base64url}
+              alt="preview"
+            />
+          </Box>
+        )}
+      </Box>
     </Box>
   );
 }
