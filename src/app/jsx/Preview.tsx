@@ -17,21 +17,27 @@ export function Preview({ name }: Props) {
   const { base64url, handleShare } = usePreview(previewRef);
 
   return (
-    <Box>
-      <Card sx={{ width: 320, mt: 2, height: 240 }} ref={previewRef}>
-        <Box
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          sx={{ height: '100%' }}
-        >
-          <CardContent>
-            <Typography variant="body1">{name}</Typography>
-          </CardContent>
+    <Box sx={{ py: 2 }}>
+      <Box position={base64url ? 'absolute' : 'relative'}>
+        <Card sx={{ width: 320, height: 240 }} ref={previewRef}>
+          <Box
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            sx={{ height: '100%' }}
+          >
+            <CardContent>
+              <Typography variant="body1">{name}</Typography>
+            </CardContent>
+          </Box>
+        </Card>
+      </Box>
+      {base64url && (
+        <Box position="relative">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img style={{ display: 'block' }} src={base64url} alt="preview" />
         </Box>
-      </Card>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={base64url} alt="preview" />
+      )}
     </Box>
   );
 }
