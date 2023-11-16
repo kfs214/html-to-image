@@ -11,7 +11,7 @@ import { useImage } from './useImage';
 
 export default function Hook() {
   const previewRef = useRef<HTMLDivElement>(null);
-  const { saveImage } = useImage(previewRef);
+  const { handleShare } = useImage(previewRef);
 
   return (
     <main>
@@ -21,7 +21,7 @@ export default function Hook() {
           <Form ref={previewRef} />
         </Box>
         <Box sx={{ mt: 2 }}>
-          <Button onClick={saveImage} variant="outlined">
+          <Button onClick={handleShare} variant="outlined">
             Save
           </Button>
         </Box>
