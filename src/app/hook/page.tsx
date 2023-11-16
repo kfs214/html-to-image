@@ -5,8 +5,7 @@ import React, { useRef } from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 
-import { Form } from '@/components';
-
+import { Form } from './Form';
 import { useImage } from './useImage';
 
 export default function Hook() {
